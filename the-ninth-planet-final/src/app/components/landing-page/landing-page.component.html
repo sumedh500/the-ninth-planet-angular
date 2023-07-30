@@ -1,0 +1,33 @@
+<div class="navbar">
+    <div class="navbar-brand">LOGO</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/product">Product</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/about">Contact</a></li>
+    </ul>
+  </div>
+  
+  <canvas id="starsCanvas"></canvas>
+  
+  <div class="slider">
+    <h1>The Ninth Planet </h1>
+  </div>
+  <div class="section">
+    <div class="products">
+      <h1>Products</h1>
+    </div>
+  
+    <div class="form-filled-width">
+      <div class="container">
+        <div class="product-item" *ngFor="let product of products">
+          <img [src]="product.image">
+          <span class="product-name">
+          {{product.name}} <br>
+            {{product.price}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
