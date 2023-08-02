@@ -1,0 +1,104 @@
+<!-- item-form.component.html -->
+
+<form [formGroup]="addForm" >
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Name:</mat-label>
+      <input matInput type="text" id="name" formControlName="name">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Description:</mat-label>
+      <textarea matInput id="description" formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Price:</mat-label>
+      <input matInput type="number" id="price" formControlName="price">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Currency:</mat-label>
+      <input matInput type="text" id="currency" formControlName="currency">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Brand:</mat-label>
+      <input matInput type="text" id="brand" formControlName="brand">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Category:</mat-label>
+      <input matInput type="text" id="category" formControlName="category">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Stock:</mat-label>
+      <input matInput type="number" id="stock" formControlName="stock">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Image URL:</mat-label>
+      <input matInput type="text" id="image" formControlName="image">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Rating:</mat-label>
+      <input matInput type="number" id="rating" formControlName="rating">
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" (click)="click()">Submit</button>
+  </form>
+  
+  <mat-card>
+
+    <!-- USE FULL for data binding -->
+  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+  </table> -->
+
+
+  <table mat-table [dataSource] = "dataSource" class = "mat-elevation-z8"> 
+    <ng-container matColumnDef = "image">
+       <th mat-header-cell *matHeaderCellDef> Image</th>
+       <td mat-cell *matCellDef = "let element">
+        <img width="100" height="100" [src]="element.image"/>
+       </td>
+    </ng-container>
+    <ng-container matColumnDef = "name">
+       <th mat-header-cell *matHeaderCellDef>Name</th>
+       <td mat-cell *matCellDef = "let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef = "description">
+       <th mat-header-cell *matHeaderCellDef>Description</th>
+       <td mat-cell *matCellDef = "let element"> {{element.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef = "price">
+       <th mat-header-cell *matHeaderCellDef>Price</th>
+       <td mat-cell *matCellDef = "let element"> {{element.price}} </td>
+    </ng-container>
+    <ng-container matColumnDef = "brand">
+       <th mat-header-cell *matHeaderCellDef>Brand</th>
+      <td mat-cell *matCellDef = "let element"> {{element.protein}} </td>
+    </ng-container> 
+    <ng-container matColumnDef = "category">
+        <th mat-header-cell *matHeaderCellDef>Category</th>
+       <td mat-cell *matCellDef = "let element"> {{element.category}} </td>
+     </ng-container> 
+     <ng-container matColumnDef = "stock">
+        <th mat-header-cell *matHeaderCellDef>Stock</th>
+       <td mat-cell *matCellDef = "let element"> 
+        <button mat-raised-button color="warn" type="submit" (click)="deleteItem(element._id)">delete</button>
+        <!-- <button mat-raised-button color="warn" type="submit" (click)="edit(element)">Edit</button> -->
+        </td>
+     </ng-container> 
+    <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+    <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+ </table>
+  </mat-card>
