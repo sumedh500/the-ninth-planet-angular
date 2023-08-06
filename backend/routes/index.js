@@ -38,7 +38,22 @@ router.get('/getallitem', async (req, res) => {
   }
 });
 
-
+router.get('/getitembyid/:id', async (req, res) => {
+  try {
+    Item.findById(req.params.id).then(item=>{
+      console.log(item)
+      res.status(200).json({
+        result:'success',
+        data:item
+      })
+    }).catch(e=>{
+      throw e
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 router.delete('/deleteitem/:id', async (req, res) => {
   try {

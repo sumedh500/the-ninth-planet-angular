@@ -21,5 +21,9 @@ export class CreateItemService {
   DeleteItem(id:any):Observable<any>{
     return  this.http.delete(`${host}/deleteitem/${id}`)
   }
+
+  getItemById(id:any):Observable<any>{
+    return  this.http.get(`${host}/getitembyid/`+id)
+  }
   
 }

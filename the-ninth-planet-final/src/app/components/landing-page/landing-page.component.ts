@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CreateItemService } from 'src/app/service/create-item.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,18 +18,18 @@ export class LandingPageComponent implements OnInit{
     c: [window.innerWidth * 0.5, window.innerHeight * 0.5]
   };
  
-   products:any[]=[
-    {name:"JUST WANT CUDDLES NORMAL OVERSIZED",price:"1245",image:"https://previews.123rf.com/images/serezniy/serezniy2210/serezniy221032596/192644572-fashionable-gentleman-adjusting-shirt-on-dark-background.jpg"},
-    {name:"shirt",price:"1245",image:"https://previews.123rf.com/images/serezniy/serezniy2210/serezniy221032596/192644572-fashionable-gentleman-adjusting-shirt-on-dark-background.jpg"},
-    {name:"shirt",price:"1245",image:"https://previews.123rf.com/images/serezniy/serezniy2210/serezniy221032596/192644572-fashionable-gentleman-adjusting-shirt-on-dark-background.jpg"},
-    {name:"shirt",price:"1245",image:"https://previews.123rf.com/images/serezniy/serezniy2210/serezniy221032596/192644572-fashionable-gentleman-adjusting-shirt-on-dark-background.jpg"},
-    {name:"shirt",price:"1245",image:"https://previews.123rf.com/images/serezniy/serezniy2210/serezniy221032596/192644572-fashionable-gentleman-adjusting-shirt-on-dark-background.jpg"},
-   ]
+   products:any
+   constructor( private adminService:CreateItemService,private router: Router ){}
+
   ngOnInit(): void {
     this.canvas = <HTMLCanvasElement>document.getElementById("starsCanvas");
     this.ctx = <CanvasRenderingContext2D>this.canvas.getContext("2d"); // Type casting
     this.setupStars();
     this.updateStars();
+    this.adminService.getallitem().subscribe(items=>{
+      this.products = items.data
+      console.log(this.products)
+    })
   }
 
   @HostListener('window:resize', ['$event'])
@@ -58,8 +60,11 @@ export class LandingPageComponent implements OnInit{
     });
     window.requestAnimationFrame(() => this.updateStars());
   }
+  itemView(id:any){
+    console.log(id)
+    this.router.navigate(['/item/'+id])
+  }
 }
-
 class Star {
   private x: number;
   private y: number;

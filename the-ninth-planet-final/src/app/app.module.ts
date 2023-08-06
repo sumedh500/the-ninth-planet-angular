@@ -15,11 +15,14 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatSortModule} from '@angular/material/sort';
+import { ItemviewComponent } from './components/itemview/itemview.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    ItemCreateComponent
+    ItemCreateComponent,
+    ItemviewComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -33,7 +36,8 @@ import {MatSortModule} from '@angular/material/sort';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
