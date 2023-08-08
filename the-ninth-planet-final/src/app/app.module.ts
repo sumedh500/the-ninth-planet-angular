@@ -16,15 +16,19 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatSortModule} from '@angular/material/sort';
 import { ItemviewComponent } from './components/itemview/itemview.component';
+import { BuyProductComponent } from './components/buy-product/buy-product.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     ItemCreateComponent,
-    ItemviewComponent
+    ItemviewComponent,
+    BuyProductComponent
   ],
   imports: [
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     BrowserAnimationsModule,
     MatTableModule,
     MatInputModule,

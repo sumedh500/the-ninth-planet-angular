@@ -1,0 +1,66 @@
+
+<div class="mainscreen">
+    <!-- <img src="https://image.freepik.com/free-vector/purple-background-with-neon-frame_52683-34124.jpg"  class="bgimg " alt="">--> 
+      <div class="card">
+        <div class="leftside">
+            <!-- src="https://i.pinimg.com/originals/18/9d/dc/189ddc1221d9c1c779dda4ad37a35fa1.png" -->
+          <img
+          [src]="image"
+            class="product"
+            alt="Shoes"
+          />
+        </div>
+        <div class="rightside">
+          <form  [formGroup]="addForm">
+            <h1>CheckOut</h1>
+            <h2>Payment Information</h2>
+            <p>Name</p>
+            <input type="text" class="inputbox" name="name" required formControlName="name" />
+            <p>Email</p>
+            <input type="email" class="inputbox" name="card_number" id="card_number" required formControlName="email" />
+
+            <p>Mobile</p>
+            <input type="number" class="inputbox" name="card_number" id="card_number" required formControlName="phone" />
+
+
+            <p>Street</p>
+            <input type="text" class="inputbox" name="name" required formControlName="street" />
+
+            <div class="expcvv">
+
+            <p class="expcvv_text">City</p>
+            <input type="text" class="inputbox" name="exp_date" id="exp_date" required  formControlName="city"/>
+
+            <p class="expcvv_text2">State</p>
+            <input type="text" class="inputbox" name="cvv" id="cvv" required formControlName="state"/>
+        </div>
+        <p>Pin Code</p>
+
+        <input type="number" class="inputbox" name="name" required formControlName="pincode" /> 
+        <label class="form-control">
+            <input type="radio" name="radio" value="cod" formControlName="deliverytype" />
+            COD
+          </label>
+        
+          <label class="form-control">
+            <input type="radio" name="radio" value="online"  formControlName="deliverytype" />
+            Pay Now
+          </label>
+             <button type="submit" class="button"(click)="pay()" >CheckOut</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <form method="post" [action]="PAYMENT_BASE_URL" id="payment-form">
+        <input type="hidden" name="MID" id="MID">
+        <input type="hidden" name="WEBSITE" id="WEBSITE">
+        <input type="hidden" name="ORDER_ID" id="ORDER_ID">
+        <input type="hidden" name="CUST_ID" id="CUST_ID">
+        <input type="hidden" name="MOBILE_NO" id="MOBILE_NO">
+        <input type="hidden" name="EMAIL" id="EMAIL">
+        <input type="hidden" name="INDUSTRY_TYPE_ID" id="INDUSTRY_TYPE_ID">
+        <input type="hidden" name="CHANNEL_ID" id="CHANNEL_ID">
+        <input type="hidden" name="TXN_AMOUNT" id="TXN_AMOUNT">
+        <input type="hidden" name="CALLBACK_URL" id="CALLBACK_URL" >
+        <input type="hidden" name="CHECKSUMHASH" id="CHECKSUMHASH" >
+    </form>

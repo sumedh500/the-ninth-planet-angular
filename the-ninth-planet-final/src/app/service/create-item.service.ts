@@ -25,5 +25,9 @@ export class CreateItemService {
   getItemById(id:any):Observable<any>{
     return  this.http.get(`${host}/getitembyid/`+id)
   }
+
+  payment(data:any):Observable<any>{
+    return  this.http.post(`${host}/paynow`,data)
+  }
   
 }
